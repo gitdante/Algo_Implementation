@@ -1,22 +1,42 @@
-def partition(arr,pivot):
-    p=0
-    bound=1
-    for k in range(1,len(arr)):
-        if arr[k] < p:
-            if bound==k:
-                bound+=1
-            else:
-                arr[k],arr[bound]=arr[bound],arr[k]
-                bound+=1
-    return arr[1:bound-1],arr[bound:]
 
+"""
+Partition (A,l,r) [ input corresponds to A[l...r]] -
+    p:= A[l]
+    i:= l+1
+    for j=l+1 to r
+        if A[j] < p
+            swap A[j] and A[i]
+            i:= i+1
+    swap A[l] and A[i-1]
+"""
+def partition(arr,l,h):
+    p=arr[l]
+    i = l+1
+    print(f'location of partition:{i}')
+    # important when using range and index together
+    # you must be careful
+    # range(4)=0,1,2,3
+    # if l=0 h=3
+    # then range(3)=0,1,3 !!!!!!!!!
 
-def quick_sort(arr):
-    if len(arr)==1:
-        return arr[0]
-    else:
-        larr,rarr= partition(arr,0)
-        l=quick_sort(larr)
-        r=quick_sort(rarr)
-        return l+r
+    for j in range(l+1,h+1):
+        if arr[j] < p:
+            arr[j],arr[i]=arr[i],arr[j]
+            print(arr)
+            i+=1
+    arr[(i-1)],arr[l]=arr[l],arr[(i-1)]
+    return i-1
 
+def swap(arr,a,b):
+    return
+def quick_sort(arr,l,h):
+    if l>=h:
+        return
+    no= partition(arr,l,h)
+    quick_sort(arr,l,no-1)
+    quick_sort(arr,(no+1),h)
+
+x=[7,1,4,33,2,5,8]
+r=[1,2,4,5,7,8,33]
+quick_sort(x,0,6)
+print(x)
