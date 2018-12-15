@@ -13,7 +13,8 @@ def partition(arr,l,h):
     p=arr[l]
     i = l+1
     print(f'location of partition:{i}')
-    # important when using range and index together
+    # IMPORTANT!!!!
+    # when using range and index together
     # you must be careful
     # range(4)=0,1,2,3
     # if l=0 h=3
