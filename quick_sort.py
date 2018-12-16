@@ -33,11 +33,14 @@ def swap(arr,a,b):
 def quick_sort(arr,l,h):
     if l>=h:
         return
+    posi=l
+    arr[posi],arr[l]=arr[l],arr[posi]
     no= partition(arr,l,h)
     quick_sort(arr,l,no-1)
     quick_sort(arr,(no+1),h)
 
 x=[7,1,4,33,2,5,8]
 r=[1,2,4,5,7,8,33]
-quick_sort(x,0,6)
-print(x)
+nubarr = [i for i in open('QuickSort.txt')]
+quick_sort(nubarr,0,len(nubarr)-1)
+print(nubarr)
